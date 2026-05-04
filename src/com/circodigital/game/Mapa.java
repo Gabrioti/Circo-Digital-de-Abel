@@ -1,0 +1,214 @@
+package com.circodigital.game;
+
+import com.circodigital.model.*;
+import com.circodigital.npc.*;
+import java.util.*;
+
+/**
+ * Classe que gerencia o mapa completo do jogo com todas as salas e conexões.
+ */
+public class Mapa {
+    private Map<String, Sala> salas;
+    private Map<String, NPC> npcs;
+    
+    public Mapa() {
+        this.salas = new HashMap<>();
+        this.npcs = new HashMap<>();
+        construirMapa();
+    }
+    
+    private void construirMapa() {
+        // ========== CRIAÇÃO DAS SALAS ==========
+        
+        // Circo (Entrada principal)
+        Sala circo = new Sala(
+            "Circo",
+            "Você está na entrada de um circo digital",
+            "Você acorda em um circo digital. As cores são vibrantes mas perturbadoras.\n" +
+            "A música toca estranhamente, como se estivesse de trás para frente.\n" +
+            "Você não se lembra de como chegou aqui. Sua memória está em branco.\n" +
+            "Uma voz ecoa: 'Bem-vindo ao Circo Digital. Eu sou Abel. Sua memória... foi necessário apagá-la.'\n" +
+            "Você pode tentar explorar daqui. Para o NORTE há uma entrada escura."
+        );
+        salas.put("Circo", circo);
+        
+        // Entrada (Com espelho)
+        Sala entrada = new Sala(
+            "Entrada",
+            "Uma entrada escura com um espelho antigo na parede",
+            "Você entra em um corredor escuro. Suas pegadas ecoam no chão frio.\n" +
+            "Na parede à sua frente, há um ESPELHO ANTIGO com bordas corroídas.\n" +
+            "O reflexo parece distorcido... como se o espelho mostrasse algo diferente da realidade.\n" +
+            "De aqui, você pode ir NORTE (Corredor Distorcido) ou SUL (Circo)."
+        );
+        salas.put("Entrada", entrada);
+        
+        // Corredor Distorcido (Central)
+        Sala corredorDistorcido = new Sala(
+            "Corredor Distorcido",
+            "Um corredor central que conecta os ambientes",
+            "Você chega a um corredor amplo mas perturbador.\n" +
+            "As paredes parecem se mover sutilmente. Há uma frase escrita na parede em tinta vermelha:\n" +
+            "\"CORES REVELAM A VERDADE\"\n" +
+            "No chão há um VASO DE FLORES, intacto e brilhante.\n" +
+            "Daqui, você pode ir:\n" +
+            "- SUL: Entrada\n" +
+            "- NORTE: Sala do Silêncio\n" +
+            "- LESTE: Tenda Principal\n" +
+            "- OESTE: Sala da Risada"
+        );
+        salas.put("Corredor Distorcido", corredorDistorcido);
+        
+        // Sala do Silêncio
+        Sala salaSilencio = new Sala(
+            "Sala do Silêncio",
+            "Uma sala silenciosa e escura",
+            "Você entra em uma sala onde nenhum som existe.\n" +
+            "Seus passos não ecoam. Sua respiração é silenciosa.\n" +
+            "Na parede, há uma FOTO DECOLORIDA em um porta-retratos de madeira.\n" +
+            "O silêncio é ensurdecedor. Você sente como se estivesse fora da realidade.\n" +
+            "Daqui, você pode ir:\n" +
+            "- SUL: Corredor Distorcido\n" +
+            "- LESTE: Palco Quebrado"
+        );
+        salas.put("Sala do Silêncio", salaSilencio);
+        
+        // Sala da Risada
+        Sala salaRisada = new Sala(
+            "Sala da Risada",
+            "Uma sala aterradora com uma máscara antiga",
+            "Você entra em uma sala onde o som de risadas ecoam continuamente.\n" +
+            "Na parede, há uma máscara de palhaço antiga e assustadora.\n" +
+            "Se usar a MÁSCARA, você ouve uma charada que pode ajudá-lo a entender a ordem das letras.\n" +
+            "CHARADA: 'Quando Abel vê cores, cores não veem Abel. Qual cor ele prefere? Assim virá verdade.'\n" +
+            "Daqui, você pode ir:\n" +
+            "- LESTE: Corredor Distorcido\n" +
+            "- SUL: Camarim Abandonado"
+        );
+        salas.put("Sala da Risada", salaRisada);
+        
+        // Tenda Principal (Com Palhaço)
+        Sala tendaPrincipal = new Sala(
+            "Tenda Principal",
+            "A tenda do Palhaço Quebrado",
+            "Você entra em uma tenda com cortinas vermelhas e azuis.\n" +
+            "No centro, está o PALHAÇO QUEBRADO, sentado imóvel.\n" +
+            "Sua maquiagem está borrada. Seus olhos parecem vazios.\n" +
+            "Ele parece oferecer uma pista se você trouxer algo para ele.\n" +
+            "Daqui, você pode ir:\n" +
+            "- OESTE: Corredor Distorcido\n" +
+            "- NORTE: Palco Quebrado"
+        );
+        salas.put("Tenda Principal", tendaPrincipal);
+        
+        // Palco Quebrado
+        Sala pagoQuebrado = new Sala(
+            "Palco Quebrado",
+            "Um palco antigo com uma fita de áudio",
+            "Você sobe em um palco antigo com assoalho apodrecido.\n" +
+            "Holofotes danificados. Cortinas rasgadas.\n" +
+            "No chão, há uma FITA DE ÁUDIO antiga que ainda funciona.\n" +
+            "A fita contém uma mensagem importante sobre Abel e cores.\n" +
+            "Daqui, você pode ir:\n" +
+            "- SUL: Tenda Principal\n" +
+            "- OESTE: Sala do Silêncio\n" +
+            "- LESTE: Camarim Abandonado"
+        );
+        salas.put("Palco Quebrado", pagoQuebrado);
+        
+        // Camarim Abandonado
+        Sala camarimAbandonado = new Sala(
+            "Camarim Abandonado",
+            "Um camarim polvoso e esquecido",
+            "Você entra em um camarim acumulado de pó.\n" +
+            "Há espelhos rachados, maquiagem espalhada, roupas rasgadas.\n" +
+            "No canto, há uma BONECA FRAGMENTADA, feita de papel e pano.\n" +
+            "Se você usar a BONECA FRAGMENTADA, algo extraordinário acontece.\n" +
+            "Daqui, você pode ir:\n" +
+            "- NORTE: Palco Quebrado\n" +
+            "- OESTE: Sala da Risada"
+        );
+        salas.put("Camarim Abandonado", camarimAbandonado);
+        
+        // Escritório do Abel (Sala Final)
+        Sala escritorioAbel = new Sala(
+            "Escritório do Abel",
+            "O escritório final de Abel",
+            "Você entra em uma sala futurística e desconfortável.\n" +
+            "Na parede, há dois BOTÕES iluminados:\n" +
+            "- Um BOTÃO VERMELHO brilha intensamente\n" +
+            "- Um BOTÃO AZUL, mais suave e calmo\n" +
+            "Uma tela exibe: 'Digite seu nome verdadeiro e escolha sabiamente.'\n" +
+            "A frase na parede diz: 'CORES REVELAM A VERDADE'\n" +
+            "E você se lembra: 'Abel prefere vermelho, mas a verdade não é dele...'"
+        );
+        // Este escritório será acessível apenas com a chave
+        escritorioAbel.bloquearComItem("Chave do Escritório");
+        salas.put("Escritório do Abel", escritorioAbel);
+        
+        // ========== CRIAÇÃO DAS CONEXÕES ==========
+        
+        circo.adicionarConexao("norte", entrada);
+        
+        entrada.adicionarConexao("norte", corredorDistorcido);
+        entrada.adicionarConexao("sul", circo);
+        
+        corredorDistorcido.adicionarConexao("sul", entrada);
+        corredorDistorcido.adicionarConexao("norte", salaSilencio);
+        corredorDistorcido.adicionarConexao("leste", tendaPrincipal);
+        corredorDistorcido.adicionarConexao("oeste", salaRisada);
+        
+        salaSilencio.adicionarConexao("sul", corredorDistorcido);
+        salaSilencio.adicionarConexao("leste", pagoQuebrado);
+        
+        salaRisada.adicionarConexao("leste", corredorDistorcido);
+        salaRisada.adicionarConexao("sul", camarimAbandonado);
+        
+        tendaPrincipal.adicionarConexao("oeste", corredorDistorcido);
+        tendaPrincipal.adicionarConexao("norte", pagoQuebrado);
+        
+        pagoQuebrado.adicionarConexao("sul", tendaPrincipal);
+        pagoQuebrado.adicionarConexao("oeste", salaSilencio);
+        pagoQuebrado.adicionarConexao("leste", camarimAbandonado);
+        
+        camarimAbandonado.adicionarConexao("norte", pagoQuebrado);
+        camarimAbandonado.adicionarConexao("oeste", salaRisada);
+        camarimAbandonado.adicionarConexao("sul", escritorioAbel);
+        
+        escritorioAbel.adicionarConexao("norte", camarimAbandonado);
+        
+        // ========== ADIÇÃO DE ITENS ÀS SALAS ==========
+        
+        Item vasoFlores = new Item("Vaso de Flores", "Um vaso bonito com flores secas", true);
+        corredorDistorcido.adicionarItem(vasoFlores);
+        
+        Item bonecaFragmentada = new Item("Boneca Fragmentada", "Uma boneca feita de papel e pano, por algum motivo ela brilha.", true);
+        camarimAbandonado.adicionarItem(bonecaFragmentada);
+        
+        // ========== ADIÇÃO DE NPCs ==========
+        
+        EspelhoAntigo espelho = new EspelhoAntigo();
+        npcs.put("Entrada_Espelho", espelho);
+        
+        PalhacoQuebrado palhaco = new PalhacoQuebrado();
+        npcs.put("Tenda Principal_Palhaço", palhaco);
+        
+        FotoDecolorida foto = new FotoDecolorida();
+        npcs.put("Sala do Silêncio_Foto", foto);
+        
+        FitaDeAudio fita = new FitaDeAudio();
+        npcs.put("Palco Quebrado_Fita", fita);
+    }
+    
+    public Sala obterSala(String nome) {
+        return salas.get(nome);
+    }
+    
+    public NPC obterNPC(String chave) {
+        return npcs.get(chave);
+    }
+    
+    public Sala irParaDirecao(Sala salaAtual, String direcao) {
+        return salaAtual.obterConexao(direcao);
+    }
+}
