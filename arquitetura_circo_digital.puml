@@ -1,0 +1,161 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "com.circodigital.game" {
+  class Jogo {
+    - mapa: Mapa
+    - jogador: Jogador
+    - salaAtual: Sala
+    - scanner: Scanner
+    - jogoAtivo: boolean
+    - jogoVencido: boolean
+    - jogoFinalizado: boolean
+    + iniciarJogo()
+    + loopPrincipal()
+    + processarComando(comando: String)
+    + moverJogador(direcao: String)
+    + inspecionar(nomeObjeto: String)
+    + falarComNPC(nomeNPC: String)
+    + usarItem(nomeItem: String)
+    + exibirAjuda()
+    + finalizarJogo(vitoria: boolean)
+    + entrarEscritorio()
+    + limparTela()
+    + main(args: String[])
+  }
+
+  class Mapa {
+    - salas: Map<String, Sala>
+    - npcs: Map<String, NPC>
+    + construirMapa()
+    + obterSala(nome: String): Sala
+    + obterNPC(chave: String): NPC
+    + irParaDirecao(salaAtual: Sala, direcao: String): Sala
+  }
+}
+
+package "com.circodigital.model" {
+  class Sala {
+    - nome: String
+    - descricao: String
+    - descricaoDetalhada: String
+    - conexoes: Map<String, Sala>
+    - itensPresentes: List<Item>
+    - pistasPresentes: List<Pista>
+    - bloqueada: boolean
+    - itemBloqueio: String
+    + exibirDescricaoCompleta()
+    + adicionarConexao(direcao: String, sala: Sala)
+    + obterConexao(direcao: String): Sala
+    + temConexao(direcao: String): boolean
+    + adicionarItem(item: Item)
+    + removerItem(nomeItem: String)
+    + obterItem(nomeItem: String): Item
+    + getItensPresentes(): List<Item>
+    + adicionarPista(pista: Pista)
+    + getPistasPresentes(): List<Pista>
+    + bloquearComItem(itemNecessario: String)
+    + estaBloqueada(): boolean
+    + getItemBloqueio(): String
+  }
+
+  class Jogador {
+    - nomeRealDesconhecido: String
+    - inventario: Inventario
+    - pistasDescobertas: List<Pista>
+    - posicaoAtual: String
+    + getInventario(): Inventario
+    + setPosicaoAtual(nomeSala: String)
+    + getPosicaoAtual(): String
+    + adicionarPista(pista: Pista)
+    + getPistasDescobertas(): List<Pista>
+    + exibirPistas()
+    + construirNomeFromPistas(): String
+  }
+
+  class Inventario {
+    - itens: List<Item>
+    - capacidade: int
+    + adicionarItem(item: Item): boolean
+    + removerItem(nomeItem: String): boolean
+    + obterItem(nomeItem: String): Item
+    + possuiItem(nomeItem: String): boolean
+    + listarItens(): List<Item>
+    + exibirInventario()
+    + getTamanho(): int
+  }
+
+  class Item {
+    - nome: String
+    - descricao: String
+    - coletavel: boolean
+    + getNome(): String
+    + getDescricao(): String
+    + isColetavel(): boolean
+  }
+
+  class Pista {
+    - conteudo: String
+    - descricao: String
+    - descoberta: boolean
+    + getConteudo(): String
+    + getDescricao(): String
+    + isDescoberta(): boolean
+    + descobrir()
+  }
+}
+
+package "com.circodigital.npc" {
+  abstract class NPC {
+    - nome: String
+    - descricao: String
+    - dialogo: String
+    - jafaloiu: boolean
+    - itemSolicitado: Item
+    - itemRetorno: Item
+    + falar()
+    + interagir(jogador: Jogador)
+    + setItemSolicitado(item: Item)
+    + setItemRetorno(item: Item)
+    + getItemSolicitado(): Item
+    + getItemRetorno(): Item
+  }
+
+  class EspelhoAntigo {
+    - pistaRevelada: boolean
+    + interagir(jogador: Jogador)
+  }
+
+  class FotoDecolorida {
+    - pistaRevelada: boolean
+    + interagir(jogador: Jogador)
+  }
+
+  class FitaDeAudio {
+    - pistaRevelada: boolean
+    + interagir(jogador: Jogador)
+  }
+
+  class PalhacoQuebrado {
+    - itemEntregue: boolean
+    + interagir(jogador: Jogador)
+  }
+}
+
+Jogo --> Mapa
+Jogo --> Jogador
+Jogo --> Sala : salaAtual
+Mapa --> Sala
+Mapa --> NPC
+Sala --> Item
+Sala --> Pista
+Jogador --> Inventario
+Jogador --> Pista
+Inventario --> Item
+NPC <|-- EspelhoAntigo
+NPC <|-- FotoDecolorida
+NPC <|-- FitaDeAudio
+NPC <|-- PalhacoQuebrado
+Sala "*" --> "*" Sala : conexoes
+
+@enduml
