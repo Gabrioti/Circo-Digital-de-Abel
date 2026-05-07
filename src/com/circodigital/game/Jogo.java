@@ -4,6 +4,28 @@ import com.circodigital.model.*;
 import com.circodigital.npc.*;
 import java.util.Scanner;
 
+/*
+// Cores de texto
+System.out.println("\033[31mTexto em Vermelho\033[0m");
+System.out.println("\033[32mTexto em Verde\033[0m");
+System.out.println("\033[33mTexto em Amarelo\033[0m");
+System.out.println("\033[34mTexto em Azul\033[0m");
+System.out.println("\033[35mTexto em Magenta\033[0m");
+System.out.println("\033[36mTexto em Ciano\033[0m");
+
+// Cores claras
+System.out.println("\033[91mVermelho Claro\033[0m");
+System.out.println("\033[92mVerde Claro\033[0m");
+
+// Texto em negrito
+System.out.println("\033[1;31mVermelho em Negrito\033[0m");
+
+// Background colorido
+System.out.println("\033[41mFundo Vermelho\033[0m");
+System.out.println("\033[42mFundo Verde\033[0m");
+
+*/
+
 /**
  * Classe principal do jogo Circo Digital de Abel V2.
  * Gerencia o fluxo completo do jogo, processamento de comandos e lógica de jogo.
@@ -47,6 +69,9 @@ public class Jogo {
         System.out.println("║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║");
         System.out.println("║                      Uma Jornada Psicológica                           ║");
         System.out.println("╚════════════════════════════════════════════════════════════════════════╝");
+
+        try { Thread.sleep(2000); } catch (InterruptedException e) {}
+
         System.out.println("\n" +
             "Você acorda em um circo... mas não se lembra como chegou aqui.\n" +
             "A memória está apagada. Em branco. Vazio.\n" +
@@ -55,25 +80,31 @@ public class Jogo {
             "\"Bem-vindo ao Circo Digital. Eu sou Abel. Sua memória... foi necessário apagá-la.\n" +
             "Para escapar, você precisa descobrir uma verdade. Uma verdade pessoal.\n" +
             "Procure por pistas. Letras, sons, objetos. Descubra seu nome verdadeiro.\n" +
-            "Nada é por acaso. Cores revelam a verdade. E a verdade não é vermelha.\"\n" +
-            "\n" +
-            "CONTROLES:\n" +
+            "Nada é por acaso. Cores revelam a verdade. E a verdade não é vermelha.\"\n");
+
+        try { Thread.sleep(2000); } catch (InterruptedException e) {}   
+            
+        System.out.println("CONTROLES:\n" +
             "  - norte/sul/leste/oeste: Mover\n" +
             "  - usar <item>: Usar um item do inventário\n" +
             "  - inspecionar <objeto>: Examinar algo\n" +
-            "  - inventário: Ver itens\n" +
+            "  - inventario: Ver itens\n" +
             "  - pistas: Ver pistas descobertas\n" +
             "  - falar <npc>: Interagir com NPCs\n" +
             "  - pegar <item>: Pegar um item da sala\n" +
             "  - ajuda: Mostrar lista completa de comandos\n" +
-            "  - sair: Abandonar jogo\n"
-        );
+            "  - sair: Abandonar jogo\n");
+
+        System.out.println("\nPressione ENTER para continuar...");
+        scanner.nextLine();
+        limparTela();
     }
     
     /**
      * Loop principal do jogo.
      */
     private void loopPrincipal() {
+
         while (jogoAtivo && !jogoFinalizado) {
             System.out.print("\n> ");
             String entrada = scanner.nextLine().trim().toLowerCase();
@@ -101,27 +132,64 @@ public class Jogo {
                 moverJogador(acao);
                 break;
             case "inspecionar":
+                limparTela();
                 inspecionar(argumento);
+                System.out.println("\nPressione ENTER para continuar...");
+                scanner.nextLine();
+                limparTela();
+                jogador.setPosicaoAtual(salaAtual.getNome());
+                exibirDescricaoSala();
                 break;
-            case "inventário":
+            case "inventario":
                 limparTela();
                 jogador.getInventario().exibirInventario();
+                System.out.println("\nPressione ENTER para continuar...");
+                scanner.nextLine();
+                limparTela();
+                jogador.setPosicaoAtual(salaAtual.getNome());
+                exibirDescricaoSala();
+
                 break;
             case "pistas":
                 jogador.exibirPistas();
+                System.out.println("\nPressione ENTER para continuar...");
+                scanner.nextLine();
+                limparTela();
+                jogador.setPosicaoAtual(salaAtual.getNome());
+                exibirDescricaoSala();
                 break;
             case "falar":
                 falarComNPC(argumento);
+                System.out.println("\nPressione ENTER para continuar...");
+                scanner.nextLine();
+                limparTela();
+                jogador.setPosicaoAtual(salaAtual.getNome());
+                exibirDescricaoSala();
                 break;
             case "usar":
                 usarItem(argumento);
+                System.out.println("\nPressione ENTER para continuar...");
+                scanner.nextLine();
+                limparTela();
+                jogador.setPosicaoAtual(salaAtual.getNome());
+                exibirDescricaoSala();
                 break;
             case "pegar":
                 pegarItem(argumento);
+                System.out.println("\nPressione ENTER para continuar...");
+                scanner.nextLine();
+                limparTela();
+                jogador.setPosicaoAtual(salaAtual.getNome());
+                exibirDescricaoSala();
                 break;
             case "ajuda":
                 limparTela();
                 exibirAjuda();
+                System.out.println("\nPressione ENTER para continuar...");
+                scanner.nextLine();
+                limparTela();
+                jogador.setPosicaoAtual(salaAtual.getNome());
+                exibirDescricaoSala();
                 break;
             case "sair":
                 finalizarJogo(false);
@@ -348,7 +416,7 @@ public class Jogo {
             return;
         }
         
-        System.out.println("[SISTEMA] Você não consegue usar " + nomeItem + ".");
+        System.out.println("[SISTEMA] Você não consegue usar ou pegar " + nomeItem + ".");
     }
     
     /**
@@ -358,13 +426,14 @@ public class Jogo {
         System.out.println("\n[SISTEMA] COMANDOS DISPONÍVEIS:");
         System.out.println("  norte/sul/leste/oeste - Mover em direção");
         System.out.println("  inspecionar <objeto>  - Examinar um objeto ou NPC");
-        System.out.println("  inventário            - Ver itens coletados");
+        System.out.println("  inventario            - Ver itens coletados");
         System.out.println("  pistas                - Ver pistas descobertas");
         System.out.println("  falar <npc>           - Conversar com um NPC");
         System.out.println("  usar <item>           - Usar um item do inventário");
         System.out.println("  pegar <item>          - Pegar um item da sala");
         System.out.println("  ajuda                 - Mostrar esta mensagem");
         System.out.println("  sair                  - Abandonar o jogo");
+
     }
     
     /**
@@ -422,11 +491,13 @@ public class Jogo {
         String escolhaDigitada = scanner.nextLine().trim();
         
         if (escolhaDigitada.equals("1")) {
+            limparTela();
             System.out.println("\n[ABEL] Você escolheu o botão vermelho... Minha cor favorita...");
             System.out.println("A sala volta ao escuro. Abel risos ecoam.");
             System.out.println("Você permanece no Circo Digital. A verdade não era vermelha...");
             finalizarJogo(false);
         } else if (escolhaDigitada.equals("2")) {
+            limparTela();
             System.out.println("\n[ABEL] O botão azul... Sábio! A verdade não é vermelha!");
             System.out.println("As paredes do escritório desaparecem em partículas de luz azul.");
             System.out.println("Você vê seu verdadeiro nome refletido nas paredes:");
@@ -435,6 +506,7 @@ public class Jogo {
             System.out.println("Você está livre. Sua memória voltou. Você é MARCOS.");
             finalizarJogo(true);
         } else {
+            limparTela();
             System.out.println("\n[SISTEMA] Escolha inválida. Nada aconteceu...");
             System.out.println("Tente novamente:");
             entrarEscritorio();

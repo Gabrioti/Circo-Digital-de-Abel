@@ -45,6 +45,8 @@ public class Inventario {
     public void exibirInventario() {
         if (itens.isEmpty()) {
             System.out.println("\n[INVENTÁRIO] Vazio");
+            
+
         } else {
             System.out.println("\n[INVENTÁRIO]");
             for (int i = 0; i < itens.size(); i++) {
