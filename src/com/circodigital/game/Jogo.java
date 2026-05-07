@@ -59,11 +59,12 @@ public class Jogo {
             "\n" +
             "CONTROLES:\n" +
             "  - norte/sul/leste/oeste: Mover\n" +
+            "  - usar <item>: Usar um item do inventário\n" +
             "  - inspecionar <objeto>: Examinar algo\n" +
             "  - inventário: Ver itens\n" +
             "  - pistas: Ver pistas descobertas\n" +
             "  - falar <npc>: Interagir com NPCs\n" +
-            "  - usar <item>: Usar um item\n" +
+            "  - pegar <item>: Pegar um item da sala\n" +
             "  - ajuda: Mostrar lista completa de comandos\n" +
             "  - sair: Abandonar jogo\n"
         );
@@ -114,6 +115,9 @@ public class Jogo {
                 break;
             case "usar":
                 usarItem(argumento);
+                break;
+            case "pegar":
+                pegarItem(argumento);
                 break;
             case "ajuda":
                 limparTela();
@@ -208,12 +212,10 @@ public class Jogo {
             System.out.println(item.getDescricao());
             
             if (item.isColetavel()) {
-                System.out.println("\n[SISTEMA] Você pode coletar este item com o comando: usar " + item.getNome());
+                System.out.println("\n[SISTEMA] Você pode coletar este item com o comando: pegar " + item.getNome());
             }
             return;
         }
-        
-        // Verifica mensagens especiais
         if (salaAtual.getNome().equals("Corredor Distorcido") && nomeObjeto.contains("parede")) {
             System.out.println("\n[PAREDE]");
             System.out.println("Você lê a mensagem vermelha: \"CORES REVELAM A VERDADE\"");
@@ -222,10 +224,6 @@ public class Jogo {
         
         if (salaAtual.getNome().equals("Sala da Risada") && nomeObjeto.contains("máscara")) {
             System.out.println("\n[MÁSCARA]");
-            System.out.println("Ao colocar a máscara, você ouve uma voz sussurrar:");
-            System.out.println("\"Quando Abel vê cores, cores não veem Abel.\"");
-            System.out.println("\"Ele prefere verMELHo... Mas a verdade não é dele.\"");
-            System.out.println("\n[DICA] Preste atenção em cores e em verdades!");
             return;
         }
         
@@ -261,11 +259,11 @@ public class Jogo {
     }
     
     /**
-     * Usa um item do inventário ou da sala.
+     * Pega um item da sala e o coloca no inventário.
      */
-    private void usarItem(String nomeItem) {
+    private void pegarItem(String nomeItem) {
         if (nomeItem.isEmpty()) {
-            System.out.println("[SISTEMA] Usar qual item?");
+            System.out.println("[SISTEMA] Pegar qual item?");
             return;
         }
         
@@ -309,6 +307,47 @@ public class Jogo {
             }
         }
         
+        // Caso especial: Máscara
+        if (nomeItem.contains("máscara") || nomeItem.contains("mascara")) {
+            Item mascara = salaAtual.obterItem("Máscara");
+            if (mascara != null) {
+                if (jogador.getInventario().adicionarItem(mascara)) {
+                    salaAtual.removerItem("Máscara");
+                    limparTela();
+                    System.out.println("[SISTEMA] Você coletou a Máscara!");
+                    return;
+                }
+            }
+        }
+        
+        // Se não conseguir coletar da sala, tenta usar do inventário
+        usarItem(nomeItem);
+    }
+    
+    /**
+     * Usa um item do inventário.
+     */
+    private void usarItem(String nomeItem) {
+        if (nomeItem.isEmpty()) {
+            System.out.println("[SISTEMA] Usar qual item?");
+            return;
+        }
+        
+        String nomeItemLower = nomeItem.toLowerCase();
+        
+        if (nomeItemLower.contains("máscara") || nomeItemLower.contains("mascara")) {
+            if (jogador.getInventario().possuiItem("Máscara")) {
+                System.out.println("Ao colocar a máscara, você ouve uma voz sussurrar: Quando Abel vê cores, cores não veem Abel.\nEle prefere verMELHo... Mas a verdade não é dele.");
+                return;
+            }
+        }
+        
+        Item item = jogador.getInventario().obterItem(nomeItem);
+        if (item != null) {
+            System.out.println("[SISTEMA] Você usa " + item.getNome() + ", mas nada acontece.");
+            return;
+        }
+        
         System.out.println("[SISTEMA] Você não consegue usar " + nomeItem + ".");
     }
     
@@ -322,7 +361,8 @@ public class Jogo {
         System.out.println("  inventário            - Ver itens coletados");
         System.out.println("  pistas                - Ver pistas descobertas");
         System.out.println("  falar <npc>           - Conversar com um NPC");
-        System.out.println("  usar <item>           - Usar ou coletar um item");
+        System.out.println("  usar <item>           - Usar um item do inventário");
+        System.out.println("  pegar <item>          - Pegar um item da sala");
         System.out.println("  ajuda                 - Mostrar esta mensagem");
         System.out.println("  sair                  - Abandonar o jogo");
     }
@@ -336,13 +376,13 @@ public class Jogo {
         if (vitoria) {
             jogoVencido = true;
             System.out.println("\n╔════════════════════════════════════════════════════════════╗");
-            System.out.println("║                      PARABÉNS! VOCÊ VENCEU!                 ║");
-            System.out.println("║                 Descobriu a verdade sobre seu nome.          ║");
+            System.out.println("║                      PARABÉNS! VOCÊ VENCEU!                ║");
+            System.out.println("║                 Descobriu a verdade sobre seu nome.        ║");
             System.out.println("╚════════════════════════════════════════════════════════════╝");
         } else {
             System.out.println("\n╔════════════════════════════════════════════════════════════╗");
-            System.out.println("║                        FIM DO JOGO                          ║");
-            System.out.println("║             Você deixou o Circo Digital atrás...             ║");
+            System.out.println("║                        FIM DO JOGO                         ║");
+            System.out.println("║             Você deixou o Circo Digital atrás...           ║");
             System.out.println("╚════════════════════════════════════════════════════════════╝");
         }
     }

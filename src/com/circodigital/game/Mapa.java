@@ -184,6 +184,9 @@ public class Mapa {
         
         Item bonecaFragmentada = new Item("Boneca Fragmentada", "Uma boneca feita de papel e pano, por algum motivo ela brilha.", true);
         camarimAbandonado.adicionarItem(bonecaFragmentada);
+
+        Item mascara = new Item("Máscara", "Uma máscara de palhaço antiga e assustadora.", true);
+        salaRisada.adicionarItem(mascara);
         
         // ========== ADIÇÃO DE NPCs ==========
         
