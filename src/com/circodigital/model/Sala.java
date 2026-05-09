@@ -14,6 +14,7 @@ public class Sala {
     private List<Pista> pistasPresentes;
     private boolean bloqueada;
     private String itemBloqueio; // Item necessário para acessar (ex: "Chave do Escritório")
+    private String asciiArt; // Arte ASCII exibida ao entrar na sala
     
     public Sala(String nome, String descricao, String descricaoDetalhada) {
         this.nome = nome;
@@ -24,6 +25,7 @@ public class Sala {
         this.pistasPresentes = new ArrayList<>();
         this.bloqueada = false;
         this.itemBloqueio = null;
+        this.asciiArt = null;
     }
     
     public String getNome() {
@@ -42,14 +44,19 @@ public class Sala {
         System.out.println("\n========================================");
         System.out.println("[" + nome.toUpperCase() + "]");
         System.out.println("========================================");
+        if (asciiArt != null && !asciiArt.isEmpty()) {
+            System.out.println(asciiArt);
+            System.out.println();
+        }
         System.out.println(descricaoDetalhada);
+
         if (!itensPresentes.isEmpty()) {
             System.out.println("\n[ITENS PRESENTES]");
             for (Item item : itensPresentes) {
                 System.out.println("  - " + item.getNome() + ": " + item.getDescricao());
             }
         }
-        exibirConexoes();
+        //exibirConexoes();
     }
     
     private void exibirConexoes() {
@@ -105,6 +112,14 @@ public class Sala {
     public void bloquearComItem(String itemNecessario) {
         this.bloqueada = true;
         this.itemBloqueio = itemNecessario;
+    }
+    
+    public void setAsciiArt(String asciiArt) {
+        this.asciiArt = asciiArt;
+    }
+    
+    public String getAsciiArt() {
+        return asciiArt;
     }
     
     public boolean estaBloqueada() {

@@ -6,13 +6,11 @@ import java.util.*;
  * Classe que representa o jogador no jogo.
  */
 public class Jogador {
-    private String nomeRealDesconhecido;
     private Inventario inventario;
     private List<Pista> pistasDescobertas;
     private String posicaoAtual;
     
     public Jogador(int capacidadeInventario) {
-        this.nomeRealDesconhecido = ""; // Nome a ser descoberto: MARCOS
         this.inventario = new Inventario(capacidadeInventario);
         this.pistasDescobertas = new ArrayList<>();
         this.posicaoAtual = "Circo";
