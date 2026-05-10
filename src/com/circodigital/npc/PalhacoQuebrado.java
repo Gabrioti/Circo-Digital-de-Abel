@@ -25,12 +25,33 @@ public class PalhacoQuebrado extends NPC {
         if (!itemEntregue && jogador.getInventario().possuiItem("Vaso de Flores")) {
             System.out.println("\n[SISTEMA] Você entregou o Vaso de Flores ao Palhaço.");
             jogador.getInventario().removerItem("Vaso de Flores");
+
+            System.out.println("\n[PALHAÇO QUEBRADO] Oh... um presente... Isso é tão raro para mim...");
+
+            try { Thread.sleep(2000); } catch (InterruptedException e) {} 
+
+            System.out.println("\n[PALHAÇO QUEBRADO] *olha para o vaso com um sorriso triste* Obrigado...\n");
+
+            try { Thread.sleep(2000); } catch (InterruptedException e) {} 
+
+            System.out.println("[PALHAÇO QUEBRADO] Ouvir dizer que você está atrás do seu nome, não é?\nBem, eu sei qual é o seu nome...");
+
+            try { Thread.sleep(2000); } catch (InterruptedException e) {}   
+
+            System.out.println("O seu nome é M...");
+
+            try { Thread.sleep(2000); } catch (InterruptedException e) {} // som de morte matada
+
+            System.out.println("[ABEL] Você NÃO deve revelar essas coisas para ele...");
+
+            try { Thread.sleep(2000); } catch (InterruptedException e) {} 
+
+            System.out.println("[SISTEMA] O Palhaço simplismente desapareceu...");
             
             // Recebe a letra 'M'
             Pista pistaM = new Pista("M", "Letra 'M' do Palhaço");
             jogador.adicionarPista(pistaM);
             
-            System.out.println("\n[PALHAÇO QUEBRADO] *sorri fracamente* Obrigado... A primeira letra é MEU, é MINHA dor...");
             itemEntregue = true;
         } else if (!itemEntregue) {
             System.out.println("\n[PALHAÇO QUEBRADO] Sem presentes... Sem esperança...");

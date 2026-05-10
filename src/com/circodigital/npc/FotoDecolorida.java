@@ -11,7 +11,7 @@ public class FotoDecolorida extends NPC {
     
     public FotoDecolorida() {
         super(
-            "Foto Decolorida",
+            "Foto Descolorida",
             "Uma foto antiga e embaçada em uma parede de madeira apodrecida",
             "Parece ser um retrato de alguém importante, mas o tempo a dannificou."
         );
@@ -23,8 +23,8 @@ public class FotoDecolorida extends NPC {
         if (!pistaRevelada) {
             System.out.println("\n[FOTO DECOLORIDA]");
             System.out.println("Você examina a foto com atenção e consegue ler no verso:");
-            System.out.println("\"O silêncio revela o que os olhos não veem...");
-            System.out.println("A verdade está inscrita: O, S\"");
+            System.out.println("\"Cores revelam a verdade...");
+            System.out.println("\nA verdade está inscrita: O, S\"");
             
             Pista pistaO = new Pista("O", "Letra 'O' da Foto");
             Pista pistaS = new Pista("S", "Letra 'S' da Foto");

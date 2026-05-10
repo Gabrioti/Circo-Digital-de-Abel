@@ -70,19 +70,75 @@ public class Jogo {
         System.out.println("║                      Uma Jornada Psicológica                           ║");
         System.out.println("╚════════════════════════════════════════════════════════════════════════╝");
 
-        try { Thread.sleep(2000); } catch (InterruptedException e) {}
+        try { Thread.sleep(3000); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("Você, um jovem comum, recebeu misteriosamente um jogo sem nome e uma carta....\n");
+
+        try { Thread.sleep(5000); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("Ao abrir a carta, você lê a seguinte mensagem:\nCaro jogador, Nada é o que parece\n");
+
+        try { Thread.sleep(5000); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("Ao iniciar o jogo, você se depara com uma imagem estranha de um mosteiro...");
+
+        try { Thread.sleep(5000); } catch (InterruptedException e) {}
+        limparTela();
+
+
+        System.out.println ("                                                                                                    \n" + //
+                            "           ░▒██████████████████████████████████████████████████████████████████████████▒░           \n" + //
+                            "          ░▓████████████████████████████████████████████████████████████████████████████▓░          \n" + //
+                            "          ░▓█▓░                                 ░░░░                                 ░▓█▓░          \n" + //
+                            "          ░▓█▓░                               ░░▓██▓░░                               ░▓█▓░          \n" + //
+                            "          ░▓█▓░                               ░▓████▓░                               ░▓█▓░          \n" + //
+                            "          ░▓█▓░                                 ░██░                                 ░▓█▓░          \n" + //
+                            "          ░▓█▓░                               ░░▓██▓░░                               ░▓█▓░          \n" + //
+                            "          ░▓█▓░                              ▒████████▒░                             ░▓█▓░          \n" + //
+                            "          ░▓█▓░                             ████████████░                            ░▓█▓░          \n" + //
+                            "          ░▓█▓░                            ░█████▓▓█████░                            ░▓█▓░          \n" + //
+                            "          ░▓█▓░                            ░███▓░  ░▓███░                            ░▓█▓░          \n" + //
+                            "          ░▓█▓░                            ░███▓░  ░▓███░                            ░▓█▓░          \n" + //
+                            "          ░▓█▓░                            ░▓░  ░░░░  ░▓░                            ░▓█▓░          \n" + //
+                            "          ░▓█▓░                            ░░▒▓██████▓▒░░                            ░▓█▓░          \n" + //
+                            "          ░▓█▓░                        ░▒▓████████████████▓▒░                        ░▓█▓░          \n" + //
+                            "          ░▓█▓░                     ░▒██████████▒░░▒███████████░                     ░▓█▓░          \n" + //
+                            "          ░▓█▓░                     ░█████████▓░    ░▓█████████▒                     ░▓█▓░          \n" + //
+                            "          ░▓█▓░                     ░█████████▒      ▒█████████▒                     ░▓█▓░          \n" + //
+                            "          ░▓█▓░                     ░█████████▒      ▒█████████▒                     ░▓█▓░          \n" + //
+                            "          ░▓█▓░                     ░█████████▒      ▒█████████▒                     ░▓█▓░          \n" + //
+                            "          ░▓████████████████████████████████████████████████████████████████████████████▓░          \n" + //
+                            "          ░▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓░          \n" + //
+                            "          ░▓█▓░                                                                      ░▓█▓░          \n" + //
+                            "          ░▓████████████████████████████████████████████████████████████████████████████▓░          \n" + //
+                            "           ░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███▓▓▓▓▓▓███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░           \n" + //
+                            "                               ░░░░░░░▒▒▒▒▒▒██▒      ▒██▒▒▒▒▒▒░░░░░░░                               \n" + //
+                            "                             ░████████████████▒      ▒████████████████▒                             \n" + //
+                            "                             ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓██                             \n" + //
+                            "                             ▓████████████████████████████████████████▓                             \n"   //
+                            );
+        try { Thread.sleep(3000); } catch (InterruptedException e) {}
+
+        System.out.println("Depois de observar a imagem, você sente uma estranha sensação e de repente se vê em um lugar desconhecido...");
+
+        try { Thread.sleep(5000); } catch (InterruptedException e) {}
+        limparTela();
+
+        exibirDescricaoSala();
 
         System.out.println("\n" +
             "Você acorda em um circo... mas não se lembra como chegou aqui.\n" +
             "A memória está apagada. Em branco. Vazio.\n" +
             "\n" +
-            "Uma voz ecoa pelos alto-falantes:\n" +
+            "Uma entidade estranha começa a falar com você:\n" +
             "\"Bem-vindo ao Circo Digital. Eu sou Abel. Sua memória... foi necessário apagá-la.\n" +
             "Para escapar, você precisa descobrir uma verdade. Uma verdade pessoal.\n" +
-            "Procure por pistas. Letras, sons, objetos. Descubra seu nome verdadeiro.\n" +
-            "Nada é por acaso. Cores revelam a verdade. E a verdade não é vermelha.\"\n");
+            "Procure por pistas. Letras, sons, objetos. Descubra seu nome verdadeiro.\n");
 
-        try { Thread.sleep(2000); } catch (InterruptedException e) {}   
+        try { Thread.sleep(10000); } catch (InterruptedException e) {}   
             
         System.out.println("CONTROLES:\n" +
             "  - norte/sul/leste/oeste: Mover\n" +
@@ -405,7 +461,7 @@ public class Jogo {
         
         if (nomeItemLower.contains("máscara") || nomeItemLower.contains("mascara")) {
             if (jogador.getInventario().possuiItem("Máscara")) {
-                System.out.println("Ao colocar a máscara, você ouve uma voz sussurrar: Quando Abel vê cores, cores não veem Abel.\nEle prefere verMELHo... Mas a verdade não é dele.");
+                System.out.println("Ao colocar a máscara, você ouve uma voz sussurrar: O começo vive no mar, o final parece ecoar, juntando tudo dá um nó, que você já deve escutar.");
                 return;
             }
         }

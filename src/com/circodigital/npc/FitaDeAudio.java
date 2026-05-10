@@ -24,7 +24,6 @@ public class FitaDeAudio extends NPC {
             System.out.println("\n[FITA DE ÁUDIO]");
             System.out.println("Você coloca a fita no leitor e ouve uma voz distorcida que diz:");
             System.out.println("\"Abel prefere vermelho, mas a verdade não é dele...\"");
-            System.out.println("\n[DICA IMPORTANTE] Essa frase será relevante no final!");
             pistaRevelada = true;
         } else {
             System.out.println("\n[FITA DE ÁUDIO]");

@@ -58,7 +58,7 @@ public class Sala {
         }
         //exibirConexoes();
     }
-    
+    /*
     private void exibirConexoes() {
         System.out.println("\n[SAÍDAS DISPONÍVEIS]");
         if (conexoes.isEmpty()) {
@@ -69,6 +69,7 @@ public class Sala {
             }
         }
     }
+    */
     
     public void adicionarConexao(String direcao, Sala sala) {
         conexoes.put(direcao.toLowerCase(), sala);
