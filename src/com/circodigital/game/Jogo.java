@@ -2,27 +2,7 @@ import com.circodigital.model.*;
 import com.circodigital.npc.*;
 import java.util.Scanner;
 
-/*
-// Cores de texto
-System.out.println("\033[31mTexto em Vermelho\033[0m");
-System.out.println("\033[32mTexto em Verde\033[0m");
-System.out.println("\033[33mTexto em Amarelo\033[0m");
-System.out.println("\033[34mTexto em Azul\033[0m");
-System.out.println("\033[35mTexto em Magenta\033[0m");
-System.out.println("\033[36mTexto em Ciano\033[0m");
 
-// Cores claras
-System.out.println("\033[91mVermelho Claro\033[0m");
-System.out.println("\033[92mVerde Claro\033[0m");
-
-// Texto em negrito
-System.out.println("\033[1;31mVermelho em Negrito\033[0m");
-
-// Background colorido
-System.out.println("\033[41mFundo Vermelho\033[0m");
-System.out.println("\033[42mFundo Verde\033[0m");
-
-*/
 
 /**
  * Classe principal do jogo Circo Digital de Abel V2.
@@ -65,13 +45,141 @@ public class Jogo {
     /**
      * Exibe a introdução do jogo.
      */
+
+
     private void exibirIntroducao() {
+        System.out.println("\033[31m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[31m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[31m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[31m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[32m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[32m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[32m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[32m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[33m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[33m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[33m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[33m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[34m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[34m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[34m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[34m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[35m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[35m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[35m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[35m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[36m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[36m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[36m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[36m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[31m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[31m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[31m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[31m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[32m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[32m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[32m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[32m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[33m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[33m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[33m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[33m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[34m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[34m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[34m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[34m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[35m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[35m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[35m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[35m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[36m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[36m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[36m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[36m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[31m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[31m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[31m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[31m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[32m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[32m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[32m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[32m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[33m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[33m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[33m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[33m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[34m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[34m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[34m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[34m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[35m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[35m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[35m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[35m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
+        System.out.println("\033[36m╔════════════════════════════════════════════════════════════════════════╗\033[0m");
+        System.out.println("\033[36m║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║\033[0m");
+        System.out.println("\033[36m║                      Uma Jornada Psicológica                           ║\033[0m");
+        System.out.println("\033[36m╚════════════════════════════════════════════════════════════════════════╝\033[0m");
+        try { Thread.sleep(50); } catch (InterruptedException e) {}
+        limparTela();
+
         System.out.println("╔════════════════════════════════════════════════════════════════════════╗");
         System.out.println("║                   CIRCO DIGITAL DE ABEL - VERSÃO 2                     ║");
         System.out.println("║                      Uma Jornada Psicológica                           ║");
         System.out.println("╚════════════════════════════════════════════════════════════════════════╝");
 
-        try { Thread.sleep(3000); } catch (InterruptedException e) {}
+        try { Thread.sleep(2000); } catch (InterruptedException e) {}
         limparTela();
 
         System.out.println("Você, um jovem comum, recebeu misteriosamente um jogo sem nome e uma carta....\n");
@@ -136,10 +244,14 @@ public class Jogo {
             "Você acorda em um circo... mas não se lembra como chegou aqui.\n" +
             "A memória está apagada. Em branco. Vazio.\n" +
             "\n" +
-            "Uma entidade estranha começa a falar com você:\n" +
-            "\"Bem-vindo ao Circo Digital. Eu sou Abel. Sua memória... foi necessário apagá-la.\n" +
+            "Uma entidade estranha começa a falar com você:\n");
+
+            try { Thread.sleep(1000); } catch (InterruptedException e) {}
+
+            System.out.println("\033[91mBem-vindo ao Circo Digital. Eu sou Abel. Sua memória... foi necessário apagá-la.\n" +
             "Para escapar, você precisa descobrir uma verdade. Uma verdade pessoal.\n" +
-            "Procure por pistas. Letras, sons, objetos. Descubra seu nome verdadeiro.\n");
+            "Procure por pistas. Letras, sons, objetos. Descubra seu nome verdadeiro.\033[0m\n");
+            
 
         try { Thread.sleep(10000); } catch (InterruptedException e) {}   
             
