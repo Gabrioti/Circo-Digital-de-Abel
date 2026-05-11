@@ -164,6 +164,12 @@ public class Jogo {
             System.out.print("\n> ");
             String entrada = scanner.nextLine().trim().toLowerCase();
             processarComando(entrada);
+
+            if (jogador.getPosicaoAtual() == "Circo"){
+                ReprodutorDeAudio.tocarMusicaEmLoop("src/com/circodigital/MusicaSons/Circo.wav");
+            } else {
+                ReprodutorDeAudio.tocarMusicaEmLoop("src/com/circodigital/MusicaSons/Gameplay.wav");
+            }
         }
     }
     
@@ -504,6 +510,7 @@ public class Jogo {
             System.out.println("║                 Descobriu a verdade sobre seu nome.        ║");
             System.out.println("╚════════════════════════════════════════════════════════════╝");
         } else {
+            ReprodutorDeAudio.tocarSom("src/com/circodigital/MusicaSons/GameOver.wav");
             System.out.println("\n╔════════════════════════════════════════════════════════════╗");
             System.out.println("║                        FIM DO JOGO                         ║");
             System.out.println("║             Você deixou o Circo Digital atrás...           ║");
