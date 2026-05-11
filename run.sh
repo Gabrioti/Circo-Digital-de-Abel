@@ -24,7 +24,8 @@ fi
 
 # Compilar o projeto
 echo -e "${BLUE}Compilando projeto...${NC}"
-javac -d "$BIN_DIR" -sourcepath "$SRC_DIR" "$SRC_DIR"/com/circodigital/game/Jogo.java
+JAVA_FILES=$(find "$SRC_DIR" -name '*.java' | sort)
+javac -d "$BIN_DIR" -sourcepath "$SRC_DIR" $JAVA_FILES
 
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✓ Compilação concluída com sucesso!${NC}"

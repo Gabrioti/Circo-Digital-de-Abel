@@ -1,5 +1,3 @@
-package com.circodigital.game;
-
 import com.circodigital.model.*;
 import com.circodigital.npc.*;
 import java.util.*;

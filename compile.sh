@@ -8,20 +8,9 @@ BIN_DIR="bin"
 # Criar diretório bin se não existir
 mkdir -p "$BIN_DIR"
 
-# Compilar all classes
-javac -d "$BIN_DIR" -sourcepath "$SRC_DIR" \
-    "$SRC_DIR"/com/circodigital/model/Item.java \
-    "$SRC_DIR"/com/circodigital/model/Inventario.java \
-    "$SRC_DIR"/com/circodigital/model/Pista.java \
-    "$SRC_DIR"/com/circodigital/model/Jogador.java \
-    "$SRC_DIR"/com/circodigital/model/Sala.java \
-    "$SRC_DIR"/com/circodigital/npc/NPC.java \
-    "$SRC_DIR"/com/circodigital/npc/PalhacoQuebrado.java \
-    "$SRC_DIR"/com/circodigital/npc/EspelhoAntigo.java \
-    "$SRC_DIR"/com/circodigital/npc/FotoDecolorida.java \
-    "$SRC_DIR"/com/circodigital/npc/FitaDeAudio.java \
-    "$SRC_DIR"/com/circodigital/game/Mapa.java \
-    "$SRC_DIR"/com/circodigital/game/Jogo.java
+# Compilar todos os arquivos Java do src
+JAVA_FILES=$(find "$SRC_DIR" -name '*.java' | sort)
+javac -d "$BIN_DIR" -sourcepath "$SRC_DIR" $JAVA_FILES
 
 if [ $? -eq 0 ]; then
     echo "Compilação bem-sucedida!"

@@ -1,5 +1,3 @@
-package com.circodigital.game;
-
 import com.circodigital.model.*;
 import com.circodigital.npc.*;
 import java.util.Scanner;
@@ -57,6 +55,7 @@ public class Jogo {
     public void iniciarJogo() {
         limparTela();
         exibirIntroducao();
+        ReprodutorDeAudio.tocarMusicaEmLoop("src/com/circodigital/MusicaSons/Ambiente.wav");
         exibirDescricaoSala();
         loopPrincipal();
     }
@@ -583,6 +582,5 @@ public class Jogo {
     public static void main(String[] args) {
         Jogo jogo = new Jogo();
         jogo.iniciarJogo();
-        
     }
 }
