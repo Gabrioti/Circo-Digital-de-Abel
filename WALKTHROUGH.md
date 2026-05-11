@@ -105,10 +105,9 @@ Você deve DEDUZIR estas letras pensando no contexto da narrativa e nos enigmas.
 ```
 De Palgo Quebrado:
 1. leste          → Vai para Camarim Abandonado
-2. inspecionar boneca → Examina a Boneca Fragmentada
-3. usar boneca    → Coleta a Boneca
-4. [EVENTO] A boneca brilha! Recebe: CHAVE DO ESCRITÓRIO
-5. inventário     → Mostra: Chave do Escritório
+2. pegar boneca    → Coleta a Boneca
+3. [EVENTO] A boneca brilha! Recebe: CHAVE DO ESCRITÓRIO
+4. inventário     → Mostra: Chave do Escritório
 ```
 
 ---
@@ -124,9 +123,6 @@ De Camarim Abandonado:
 3. sul            → Volta para Camarim
 ```
 
-**Charada**: "Quando Abel vê cores, cores não veem Abel. Qual cor ele prefere?"
-
-**Resposta**: Abel prefere VERMELHO, mas a verdade não é dele = verdade é AZUL.
 
 ---
 
@@ -296,4 +292,4 @@ O nome é: **M-A-R-C-O-S** (exatamente 6 letras)
 
 **Boa sorte descubrindo a verdade sobre MARCOS! 🎪✨**
 
-*Última atualização: Maio de 2026*
+*Última atualização: 10/05/26*

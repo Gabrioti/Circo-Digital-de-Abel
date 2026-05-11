@@ -53,11 +53,13 @@ public class Jogo {
      * Inicia o jogo com a introdução narrativa.
      */
     public void iniciarJogo() {
+        ReprodutorDeAudio.tocarMusicaEmLoop("src/com/circodigital/MusicaSons/Salas.wav");
         limparTela();
         exibirIntroducao();
-        ReprodutorDeAudio.tocarMusicaEmLoop("src/com/circodigital/MusicaSons/Ambiente.wav");
+        try { Thread.sleep(5000); } catch (InterruptedException e) {}
         exibirDescricaoSala();
         loopPrincipal();
+
     }
     
     /**
@@ -126,7 +128,9 @@ public class Jogo {
         try { Thread.sleep(5000); } catch (InterruptedException e) {}
         limparTela();
 
-        exibirDescricaoSala();
+        //exibirDescricaoSala();
+
+        ReprodutorDeAudio.tocarMusicaEmLoop("src/com/circodigital/MusicaSons/Circo.wav");
 
         System.out.println("\n" +
             "Você acorda em um circo... mas não se lembra como chegou aqui.\n" +
@@ -160,16 +164,12 @@ public class Jogo {
      */
     private void loopPrincipal() {
 
+        ReprodutorDeAudio.tocarMusicaEmLoop("src/com/circodigital/MusicaSons/Gameplay.wav");
+
         while (jogoAtivo && !jogoFinalizado) {
             System.out.print("\n> ");
             String entrada = scanner.nextLine().trim().toLowerCase();
             processarComando(entrada);
-
-            if (jogador.getPosicaoAtual() == "Circo"){
-                ReprodutorDeAudio.tocarMusicaEmLoop("src/com/circodigital/MusicaSons/Circo.wav");
-            } else {
-                ReprodutorDeAudio.tocarMusicaEmLoop("src/com/circodigital/MusicaSons/Gameplay.wav");
-            }
         }
     }
     
@@ -505,16 +505,23 @@ public class Jogo {
         
         if (vitoria) {
             jogoVencido = true;
+            ReprodutorDeAudio.tocarSom("src/com/circodigital/MusicaSons/Circus.wav");
             System.out.println("\n╔════════════════════════════════════════════════════════════╗");
             System.out.println("║                      PARABÉNS! VOCÊ VENCEU!                ║");
             System.out.println("║                 Descobriu a verdade sobre seu nome.        ║");
             System.out.println("╚════════════════════════════════════════════════════════════╝");
+
+            System.out.println("\nPressione ENTER para terminar o jogo...");
+            scanner.nextLine();
         } else {
             ReprodutorDeAudio.tocarSom("src/com/circodigital/MusicaSons/GameOver.wav");
             System.out.println("\n╔════════════════════════════════════════════════════════════╗");
             System.out.println("║                        FIM DO JOGO                         ║");
             System.out.println("║             Você deixou o Circo Digital atrás...           ║");
             System.out.println("╚════════════════════════════════════════════════════════════╝");
+
+            System.out.println("\nPressione ENTER para terminar o jogo...");
+            scanner.nextLine();
         }
     }
     

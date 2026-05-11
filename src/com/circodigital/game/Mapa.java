@@ -23,7 +23,7 @@ public class Mapa {
             "Circo",
             "Você está na entrada de um circo digital",
             "Você acorda em um circo digital. As cores são vibrantes mas perturbadoras.\n" +
-            "A música toca estranhamente, como se estivesse de trás para frente.\n" +
+            "A música toca estranhamente.\n" +
             "Você não se lembra de como chegou aqui. Sua memória está em branco.\n" +
             "Uma voz ecoa: 'Bem-vindo ao Circo Digital. Eu sou Abel. Sua memória... foi necessário apagá-la.'\n" +
             "Você pode tentar explorar daqui. Para o NORTE há uma entrada escura."      
@@ -383,7 +383,7 @@ public class Mapa {
             "Se você usar a BONECA FRAGMENTADA, algo extraordinário acontece.\n" +
             "Daqui, você pode ir:\n" +
             "- NORTE: Palco Quebrado\n" +
-            "- OESTE: Sala da Risada" +
+            "- OESTE: Sala da Risada\n" +
             "- SUL: Escritório do Abel"
         );
         salas.put("Camarim Abandonado", camarimAbandonado);
